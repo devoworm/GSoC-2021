@@ -18,7 +18,7 @@ The dataset is by no means ideal, it was scattered across multiple folders and c
 ### 1.2 JPEG Vs PNG:
 I had made the mistake of converting the `.tif` files into `.jpeg`, not realising that it is a lossy compression method, it changes pixel level values as long as it “looks good” to the human observer.
 
-### 1.3 Preprocessing to Avoiding CPU Bottlenecks
+### 1.3 Preprocessing to Avoid CPU Bottlenecks
 To prevent anu CPU bottlenecks while training, I used PIL to resize all the training images to 1x256x256 beforehand.
 
 ### 1.4 Image Augmentation:
