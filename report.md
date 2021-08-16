@@ -1,4 +1,9 @@
-## Project 3.1 - Upgrading Devolearn
+## Upgrading DevoLearn
+
+* [Official work repository for GSoC-2021](https://github.com/devoworm/GSoC-2021)
+* [DevoLearn (PyPI package)](https://github.com/DevoLearn/devolearn)
+* [DevoLearn Web App](https://devolearn.herokuapp.com/)
+* [DevoLearn-Web Code Repository](https://github.com/DevoLearn/devolearn-web)
 
 ## 1. Segmenting Nuclei in C. elegans embryo
 ![](images/slices.gif)
@@ -48,31 +53,31 @@ Each trial trained the model on 10% of available data for 3 epochs, and returned
 ![](images/infer_collage_nuc_seg.png)
 
 
-## 1. Upgrading the Cell Membrane Segmentation Model:
+## 2. Upgrading the Cell Membrane Segmentation Model:
 
 ![](images/comparision_oldvsnew.gif)
 
 
-### Fixing the Flawed Data:
+### 2.1 Fixing the Flawed Data:
 The first thing I investigated was the data which was used to train the existing model. Then I checked out the preprocessing notebook, and it didnt take me long to notice that the `.mat` files were converted to `.jpg`, which led to lossy edges in segmentation maps. 
 
 This was being cleverly tackled using OpenCV based operations, but that led to larger gaps between the segmentation maps of individual cells. I re-factored the existing preprocessing code and saved the images as `.png`, which led to lossless segmentation maps. 
 
 ![](images/compare_training_data.png)
 
-### Automated Hyperparameter Optimization:
+### 2.2 Automated Hyperparameter Optimization:
 The training pipeline was built from scratch, in order to enable Optuna trials. I used it to optimize the learning rate and batch size to maximize the IOU score. Ran 100 Optuna trials, 1 epoch each, on 10% of available data.
 
-### Training Metrics:
+### 2.3 Training Metrics:
 
 ![](images/training_metrics.png)
 
-### Testing Performance on Corner-Cases:
+### 2.4 Testing Performance on Corner-Cases:
 
 ![](images/comparision_1.png)
 ![](images/comparision_2.png)
 
-## Deploying DevoLearn Models on the Web:
+## 3. Deploying DevoLearn Models on the Web:
 ![](images/devolearn_web_flow.png)
 
 The goal of building this website was to host DevoLearn models online, and provide a GUI based experience for users to test out the models. The website is currently hosted at - [https://devolearn.herokuapp.com/](https://devolearn.herokuapp.com/), the corresponding code could be found in the [devolearn-web repository](https://github.com/DevoLearn/devolearn-web)
@@ -83,7 +88,7 @@ Installing and running a Python library on a local environment might be daunting
 3. Ability to zoom, pan and view images in full-screen.
 
 
-### The Home page:
+### 3.1 The Home page:
 ![](images/home_web.png)
 
 The Home page features animations that showcase what DevoLearn can be used for. It also contains links to the 
@@ -91,46 +96,38 @@ official slack channel and PyPI package. The drop-down menu to the left enables 
 
 
 
-### Cell Membrane Segmentation model:
+### 3.2 Cell Membrane Segmentation model:
 ![](images/cell_membrane_segmentor_web.png)
 
-### Segment Nuclei from fluorscence microscopy data:
+### 3.3 Segment Nuclei from fluorscence microscopy data:
 ![](images/nuc_seg_model_web.png)
 
 
-### Predict Lineage Specific Population of Cells:
+### 3.4 Predict Lineage Specific Population of Cells:
 ![](images/lineage_population_model_web.png)
 
-### The Threshold Slider:
+### 3.5 The Threshold Slider:
 The threshold slider for the 2 segmentation models applies a threshold to the output from the model. The images below showcases results with low and high thresholds.
 
 ![](images/threshold_slider_1.png)
 ![](images/threshold_slider_2.png)
 
 
-###  Interactive Plots:
+###  3.6 Interactive Plots:
 The user will have the ability to zoom into, pan across and view images in full screen, the gif below highlights this feature.
 ![](images/zoom_fullscreen_demo.gif)
 
-## Weekly Blog Posts
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
-8. 
-9. 
-
 ***
-LINKS LINKS on headings
 
-***
-* it must be easy to identify the work you have done. (i.e. the changes you made or new code.)
-* When someone goes to the provided URL it should be clear what work you did without requiring them to do signifcant additional digging.
-* It should be in a stable location. The URL cannot be changed after submission.
-Someone else should be able to use the content at (or referenced from) the target of the link to extend your work.
-* If your work is 100% complete, they should be able to use it.
-* If your work is not 100% complete, it should be clear what's left to do.
-
+## 4. Weekly Blog Posts
+1. [GSoC - Community Bonding](https://mainakdeb.github.io/posts/gsoc-community-bonding/)
+2. [GSoC - Coding Period Week 1](https://mainakdeb.github.io/posts/gsoc-coding-period-week-1/)
+3. [GSoC - Coding Period Week 2](https://mainakdeb.github.io/posts/gsoc-coding-period-week-2/)
+4. [GSoC - Coding Period Week 3](https://mainakdeb.github.io/posts/gsoc-coding-period-week-3/)
+5. [GSoC - Coding Period Week 4](https://mainakdeb.github.io/posts/gsoc-coding-period-week-4/)
+6. [GSoC - Coding Period Week 5](https://mainakdeb.github.io/posts/gsoc-coding-period-week-5/)
+7. [GSoC - Coding Period Week 6](https://mainakdeb.github.io/posts/gsoc-coding-period-week-6/)
+8. [GSoC - Coding Period Week 7](https://mainakdeb.github.io/posts/gsoc-coding-period-week-7/)
+9. [GSoC - Coding Period Week 8](https://mainakdeb.github.io/posts/gsoc-coding-period-week-8/)
+10. [GSoC - Coding Period Week 9](https://mainakdeb.github.io/posts/gsoc-coding-period-week-9/)
+10. [GSoC - Coding Period Week 10](https://mainakdeb.github.io/posts/gsoc-coding-period-week-10/)
